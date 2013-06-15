@@ -1,3 +1,9 @@
+/**
+ * Sorting algorithms
+ * @autor Dmitry Ponomarev <demdxx@gmail.com>
+ * @year 2013
+ */
+
 package algorithms
 
 import (
@@ -7,7 +13,7 @@ import (
 	"time"
 )
 
-const randLength = 10000
+const randLength = 100000
 
 var array sort.IntSlice = nil
 
@@ -73,6 +79,11 @@ func TestShakerSort(t *testing.T) {
 func TestGnomeSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	GnomeSort(arrayInts)
+	// t.Log(arrayInts)
+}
+func TestOptimizedGnomeSort(t *testing.T) {
+	arrayInts := getRandIntArray()
+	OptimizedGnomeSort(arrayInts)
 	// t.Log(arrayInts)
 }
 
