@@ -9,6 +9,8 @@ import (
 
 const randLength = 10000
 
+var array sort.IntSlice = nil
+
 func randIntArray(l int) sort.IntSlice {
 	a := make(sort.IntSlice, l)
 	for i := 0; i < l; i++ {
@@ -18,8 +20,16 @@ func randIntArray(l int) sort.IntSlice {
 }
 
 func getRandIntArray() sort.IntSlice {
-	rand.Seed(time.Now().UTC().UnixNano())
-	return randIntArray(randLength)
+	a := make(sort.IntSlice, len(array))
+	copy(a, array)
+	return a
+}
+
+func TestInit(t *testing.T) {
+	if nil == array {
+		rand.Seed(time.Now().UTC().UnixNano())
+		array = randIntArray(randLength)
+	}
 }
 
 // Google quickSort O(n*log(n))
@@ -45,6 +55,13 @@ func TestBubbleSort(t *testing.T) {
 	// t.Log(arrayInts)
 }
 
+// Combined Selection & Bubble sort
+func TestSelectionBubbleSort(t *testing.T) {
+	arrayInts := getRandIntArray()
+	SelectionBubbleSort(arrayInts)
+	// t.Log(arrayInts)
+}
+
 // Cocktail sort, bidirectional bubble sort O(n^2)
 func TestShakerSort(t *testing.T) {
 	arrayInts := getRandIntArray()
@@ -52,7 +69,13 @@ func TestShakerSort(t *testing.T) {
 	// t.Log(arrayInts)
 }
 
-// Dwarf sorting
+// Dwarf sorting (Gnome Sort) O(n^2)
+func TestGnomeSort(t *testing.T) {
+	arrayInts := getRandIntArray()
+	GnomeSort(arrayInts)
+	// t.Log(arrayInts)
+}
+
 // Insertion sort
 // Merge sort
 // Tree sort

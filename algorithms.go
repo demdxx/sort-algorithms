@@ -42,6 +42,31 @@ func BubbleSort(data sort.Interface) {
 	}
 }
 
+// Combined Selection & Bubble sort
+func SelectionBubbleSort(data sort.Interface) {
+	n := data.Len() - 1
+	b := false
+	for i := 0; i < n; i++ {
+		min := i
+		for j := 0; j < n-i; j++ {
+			if data.Less(j+1, j) {
+				data.Swap(j+1, j)
+				b = true
+			}
+			if data.Less(j, min) {
+				min = j
+			}
+		}
+		if !b {
+			break
+		}
+		if min != i { /* Exchange elements */
+			data.Swap(i, min)
+		}
+		b = false
+	}
+}
+
 // Cocktail sort, bidirectional bubble sort O(n^2)
 func ShakerSort(data sort.Interface) {
 	left := 1
@@ -69,7 +94,29 @@ func ShakerSort(data sort.Interface) {
 	}
 }
 
-// Dwarf sorting
+// Dwarf sorting (Gnome Sort) O(n^2)
+func GnomeSort(data sort.Interface) {
+	size := data.Len()
+	i := 1
+	j := 2
+	for {
+		if i >= size {
+			break
+		}
+		if data.Less(i, i-1) {
+			i = j
+			j++
+		} else {
+			data.Swap(i, i-1)
+			i--
+			if 0 == i {
+				i = j
+				j++
+			}
+		}
+	}
+}
+
 // Insertion sort
 // Merge sort
 // Tree sort
