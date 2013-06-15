@@ -54,7 +54,7 @@ func SelectionBubbleSort(data sort.Interface) {
 	b := false
 	for i := 0; i < n; i++ {
 		min := i
-		for j := 0; j < n-i; j++ {
+		for j := i; j < n-i; j++ {
 			if data.Less(j+1, j) {
 				data.Swap(j+1, j)
 				b = true
@@ -109,57 +109,7 @@ func GnomeSort(data sort.Interface) {
 		if i >= size {
 			break
 		}
-		if data.Less(i, i-1) {
-			i = j
-			j++
-		} else {
-			data.Swap(i, i-1)
-			i--
-			if 0 == i {
-				i = j
-				j++
-			}
-		}
-	}
-}
-
-// Gnome Sort Optimization from me @autor demdxx
-func OptimizedGnomeSort(data sort.Interface) {
-	size := data.Len()
-	i := 1
-	j := 2
-	for {
-		if i >= size {
-			break
-		}
-
-		// Optimization block {{{
-		if data.Less(i, 0) {
-			data.Swap(i, 0)
-			i = j
-			j++
-		} else if i > 1 {
-			x := i / 2
-			y := i
-			for {
-				if data.Less(i, x) {
-					y = x
-					if x > 2 {
-						x /= 2
-						continue
-					}
-				}
-				break
-			}
-			if y != i {
-				data.Swap(i, y)
-				i = y
-				continue
-			}
-		}
-		// }}} Optimization block
-
-		if data.Less(i, i-1) {
+		if data.Less(i-1, i) {
 			i = j
 			j++
 		} else {

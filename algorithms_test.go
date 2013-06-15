@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-const randLength = 100000
+const randLength = 10000
 
 var array sort.IntSlice = nil
 
@@ -42,7 +42,9 @@ func TestInit(t *testing.T) {
 func TestStandartGoogleSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	sort.Sort(arrayInts)
-	// t.Log(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
 }
 
 // Stable algorithms
@@ -51,40 +53,45 @@ func TestStandartGoogleSort(t *testing.T) {
 func TestSelectionSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	SelectionSort(arrayInts)
-	// t.Log(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
 }
 
 // Bubble sort O(n^2)
 func TestBubbleSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	BubbleSort(arrayInts)
-	// t.Log(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
 }
 
 // Combined Selection & Bubble sort
 func TestSelectionBubbleSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	SelectionBubbleSort(arrayInts)
-	// t.Log(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
 }
 
 // Cocktail sort, bidirectional bubble sort O(n^2)
 func TestShakerSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	ShakerSort(arrayInts)
-	// t.Log(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
 }
 
 // Dwarf sorting (Gnome Sort) O(n^2)
 func TestGnomeSort(t *testing.T) {
 	arrayInts := getRandIntArray()
 	GnomeSort(arrayInts)
-	// t.Log(arrayInts)
-}
-func TestOptimizedGnomeSort(t *testing.T) {
-	arrayInts := getRandIntArray()
-	OptimizedGnomeSort(arrayInts)
-	// t.Log(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
 }
 
 // Insertion sort
