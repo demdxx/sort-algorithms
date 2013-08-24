@@ -31,6 +31,12 @@ func getRandIntArray() sort.IntSlice {
 	return a
 }
 
+func getRandIntArray2() IntSlice {
+	a := make(IntSlice, len(array))
+	copy(a, array)
+	return a
+}
+
 func TestInit(t *testing.T) {
 	if nil == array {
 		rand.Seed(time.Now().UTC().UnixNano())
@@ -94,8 +100,24 @@ func TestGnomeSort(t *testing.T) {
 	}
 }
 
-// Insertion sort
-// Merge sort
+// Insertion sort O(n^2)
+func TestInsertSort(t *testing.T) {
+	arrayInts := getRandIntArray2()
+	InsertSort(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
+}
+
+// Merge sort O(n log n)
+func TestMergeSort(t *testing.T) {
+	arrayInts := getRandIntArray2()
+	MergeSort(arrayInts)
+	if randLength <= 100 {
+		t.Log(arrayInts)
+	}
+}
+
 // Tree sort
 // Timsort
 // Counting sort
